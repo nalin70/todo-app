@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    
+    <title>React App</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .container {
+      margin-top: 50px;
+    }
+    .todo-list {
+      margin-top: 20px;
+    }
+    .todo-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .todo-item .form-check {
+      margin-right: 10px;
+    }
+    .todo-item .form-check label {
+      text-decoration: none;
+    }
+    .todo-item .delete-btn {
+      margin-left: auto;
+    }
+  </style>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    
+    <div class="container">
+      <h2>To-Do List</h2>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Add a task" id="taskInput">
+        <div class="input-group-append">
+          <button class="btn btn-primary" type="button" onclick="addTask()">Add</button>
+        </div>
+      </div>
+      <ul class="list-group todo-list" id="taskList">
+      </ul>
+    </div>
+    
+  <script>
+    function addTask() {
+      const taskInput = document.getElementById("taskInput");
+      const taskList = document.getElementById("taskList");
+
+      if (taskInput.value.trim() !== "") {
+        const li = document.createElement("li");
+        li.className = "list-group-item todo-item";
+        li.innerHTML = `
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox">
+            <label class="form-check-label">${taskInput.value}</label>
+          </div>
+          <button class="btn btn-danger delete-btn" onclick="deleteTask(this)">Delete</button>
+        `;
+        taskList.appendChild(li);
+        taskInput.value = "";
+      }
+    }
+
+    function deleteTask(deleteBtn) {
+      const li = deleteBtn.parentElement;
+      li.remove();
+    }
+  </script>
+  </body>
+</html>
