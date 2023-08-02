@@ -1,2 +1,1 @@
-I have created this project for time pass...
-because I didn't knew how to use technologies
+to-do app
